@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="basePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.screenController.IdEditScreenController">
+   <children>
+      <Button fx:id="completeButton" layoutX="111.0" layoutY="339.0" mnemonicParsing="false" onAction="#onClickCompleteButton" prefHeight="27.0" prefWidth="83.0" text="完了" />
+      <Button fx:id="cancelButton" layoutX="203.0" layoutY="339.0" mnemonicParsing="false" onAction="#onClickCancelButton" text="キャンセル" />
+      <TextField fx:id="inputTestId" layoutX="95.0" layoutY="35.0" />
+      <Label layoutX="35.0" layoutY="39.0" text="testID" />
+      <TextField fx:id="inputVersion" layoutX="95.0" layoutY="75.0" />
+      <Label layoutX="35.0" layoutY="79.0" text="Version" />
+      <TextField fx:id="inputRatio_1" layoutX="185.0" layoutY="115.0" prefHeight="27.0" prefWidth="50.0" />
+      <TextField fx:id="inputRatio_2" layoutX="185.0" layoutY="155.0" prefHeight="27.0" prefWidth="50.0" />
+      <TextField fx:id="inputRatio_3" layoutX="185.0" layoutY="195.0" prefHeight="27.0" prefWidth="50.0" />
+      <TextField fx:id="inputRatio_4" layoutX="185.0" layoutY="235.0" prefHeight="27.0" prefWidth="50.0" />
+      <Label layoutX="35.0" layoutY="115.0" prefHeight="27.0" prefWidth="43.0" text="Case_1" />
+      <TextField fx:id="inputPatternId_1" layoutX="95.0" layoutY="115.0" prefHeight="27.0" prefWidth="62.0" />
+      <Label layoutX="36.0" layoutY="155.0" prefHeight="27.0" prefWidth="45.0" text="Case_2" />
+      <Label layoutX="35.0" layoutY="195.0" prefHeight="27.0" prefWidth="45.0" text="Case_3" />
+      <Label layoutX="35.0" layoutY="235.0" prefHeight="27.0" prefWidth="45.0" text="Case_4" />
+      <TextField fx:id="inputPatternId_2" layoutX="95.0" layoutY="155.0" prefHeight="27.0" prefWidth="62.0" />
+      <TextField fx:id="inputPatternId_3" layoutX="95.0" layoutY="195.0" prefHeight="27.0" prefWidth="62.0" />
+      <TextField fx:id="inputPatternId_4" layoutX="95.0" layoutY="235.0" prefHeight="27.0" prefWidth="62.0" />
+      <Label layoutX="238.0" layoutY="115.0" prefHeight="27.0" prefWidth="27.0" text="\%" />
+      <Label layoutX="239.0" layoutY="155.0" prefHeight="27.0" prefWidth="11.0" text="\%" />
+      <Label layoutX="240.0" layoutY="195.0" prefHeight="27.0" prefWidth="11.0" text="\%" />
+      <Label layoutX="240.0" layoutY="235.0" prefHeight="27.0" prefWidth="11.0" text="\%" />
+      <Label layoutX="35.0" layoutY="275.0" prefHeight="27.0" prefWidth="45.0" text="Case_5" />
+      <TextField fx:id="inputRatio_5" layoutX="185.0" layoutY="275.0" prefHeight="27.0" prefWidth="50.0" />
+      <TextField fx:id="inputPatternId_5" layoutX="95.0" layoutY="275.0" prefHeight="27.0" prefWidth="62.0" />
+      <Label layoutX="240.0" layoutY="275.0" prefHeight="27.0" prefWidth="11.0" text="\%" />
+   </children>
+</AnchorPane>

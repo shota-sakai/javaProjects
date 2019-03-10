@@ -21,7 +21,7 @@ public class AbtestValidator {
 	 */
 	public static boolean validateYamlFile( List<String> yamlString ) {
 
-		if( CollectionUtils.isEmpty(yamlString) || yamlString.size() > 2 ) {
+		if( CollectionUtils.isEmpty(yamlString) || yamlString.size() < 2 ) {
 			return true;
 		}
 

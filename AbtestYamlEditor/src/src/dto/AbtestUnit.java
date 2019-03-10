@@ -16,6 +16,8 @@ public class AbtestUnit {
 	private int version;
 	/** ケースのリスト */
 	private List<AbtestCaseUnit> caseUnits;
+	/** 削除フラグ */
+	private boolean isDelete = false;
 
 	public String getId() {
 		return id;
@@ -34,5 +36,11 @@ public class AbtestUnit {
 	}
 	public void setCaseUnits(List<AbtestCaseUnit> caseUnits) {
 		this.caseUnits = caseUnits;
+	}
+	public boolean isDelete() {
+		return isDelete;
+	}
+	public void setDelete(boolean isDelete) {
+		this.isDelete = isDelete;
 	}
 }
