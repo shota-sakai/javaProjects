@@ -5,12 +5,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="mainScreenPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.screenController.mainScreenController">
+<AnchorPane fx:id="mainScreenPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.screenController.mainScreenController">
    <children>
-      <Button fx:id="selectButton" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#onClickSelectButton" text="yamlファイル選択" />
-      <TextField fx:id="filePathField" layoutX="132.0" layoutY="7.0" prefHeight="27.0" prefWidth="326.0" />
-      <Button fx:id="inputButton" layoutX="458.0" layoutY="7.0" mnemonicParsing="false" onAction="#onClickInputButton" text="読み込み" />
-      <ScrollPane fx:id="displayMainPanel" layoutY="78.0" prefHeight="324.0" prefWidth="600.0">
+      <Button fx:id="selectButton" layoutX="348.0" layoutY="15.0" mnemonicParsing="false" onAction="#onClickSelectButton" prefHeight="27.0" prefWidth="32.0" text="..." />
+      <TextField fx:id="filePathField" layoutX="22.0" layoutY="15.0" prefHeight="27.0" prefWidth="326.0" />
+      <Button fx:id="inputButton" layoutX="401.0" layoutY="15.0" mnemonicParsing="false" onAction="#onClickInputButton" text="読み込み" />
+      <ScrollPane fx:id="displayMainPanel" layoutY="57.0" prefHeight="289.0" prefWidth="480.0">
          <content>
             <GridPane fx:id="displayAbtestInfoArea" prefHeight="250.0" prefWidth="379.0" translateX="30.0">
               <columnConstraints>
@@ -24,5 +24,7 @@
             </GridPane>
          </content>
       </ScrollPane>
+      <Button fx:id="addTestIdButton" layoutX="22.0" layoutY="359.0" mnemonicParsing="false" onAction="#onClickAddTestIdButton" text="ABテストID追加" />
+      <Button fx:id="outputButton" layoutX="401.0" layoutY="359.0" mnemonicParsing="false" onAction="#onClickOutputButton" prefHeight="27.0" prefWidth="70.0" text="出力" />
    </children>
 </AnchorPane>

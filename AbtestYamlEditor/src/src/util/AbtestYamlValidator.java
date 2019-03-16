@@ -11,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
  * @author sakaisyota
  *
  */
-public class AbtestValidator {
+public class AbtestYamlValidator {
 
 	/**
 	 * 読み込んだファイルがabtestファイルかどうかをチェックする

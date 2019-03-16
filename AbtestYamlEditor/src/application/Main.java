@@ -18,7 +18,7 @@ public class Main extends Application {
 //		} catch(Exception e) {
 //			e.printStackTrace();
 //		}
-		ScreenManager.getInstance().changeMainScreen();
+		ScreenManager.getInstance().displayMainScreen();
 	}
 
 	public static void main(String[] args) {

@@ -12,11 +12,11 @@ public class AbtestCaseUnit {
 	/** 割合 */
 	private int ratio;
 
-	public String getPatternId() {
+	public String getCaseId() {
 		return caseId;
 	}
-	public void setPatternId(String patternId) {
-		this.caseId = patternId;
+	public void setCaseId(String caseId) {
+		this.caseId = caseId;
 	}
 	public int getRatio() {
 		return ratio;

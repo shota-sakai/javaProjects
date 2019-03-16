@@ -116,7 +116,7 @@ public class AbtestUnitFactory {
 
 						if( StringUtils.isNotBlank(patternId) && StringUtils.isNotBlank(ratioStr) ) {
 							int ratio = Integer.parseInt(ratioStr);
-							caseUnit.setPatternId(patternId);
+							caseUnit.setCaseId(patternId);
 							caseUnit.setRatio(ratio);
 							caseList.add(caseUnit);
 						}
