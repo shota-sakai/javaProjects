@@ -48,7 +48,7 @@ public class AbtestPartsConstants{
 	 * パターンID<br>
 	 * patternId:
 	 */
-	public static final String PATTERN_ID = "        patternId: ";
+	public static final String CASE_ID = "        patternId: ";
 
 	/**
 	 * 割合<br>

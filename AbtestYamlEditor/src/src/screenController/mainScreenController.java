@@ -1,7 +1,10 @@
 package src.screenController;
 
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -12,6 +15,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +29,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import src.dto.AbtestUnit;
 import src.factory.AbtestUnitFactory;
+import src.factory.MessageDialogCreator;
+import src.factory.OutputAbtestStringFactory;
 import src.manager.ScreenManager;
 import src.util.AbtestUnitMaster;
 import src.util.AbtestYamlValidator;
@@ -55,10 +61,11 @@ public class mainScreenController implements Initializable, InterfaceScreenEvent
     @FXML
     private Button addTestIdButton;
 
+    //yamlファイルパス
+    private static String yamlFilePath = "";
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	// テストコード
-    	filePathField.setText("/Users/sakaisyota/doc/abtest.yaml");
 
 		// 「ABテストID追加」「出力」ボタンを非表示
     	addTestIdButton.setVisible(false);
@@ -86,10 +93,12 @@ public class mainScreenController implements Initializable, InterfaceScreenEvent
     @FXML
     public void onClickInputButton() {
     	try {
-    		if( filePathField.getText() == "" ) {
+    		if( StringUtils.isBlank(filePathField.getText()) ) {
+    			MessageDialogCreator.createErrorDialog("yamlファイルのパスを指定してください");
     			return;
     		}
     		Path path = Paths.get(filePathField.getText());
+    		yamlFilePath = filePathField.getText();
 
     		List<String> inputString = Files.lines(path, StandardCharsets.UTF_8).collect(Collectors.toList());
 
@@ -120,6 +129,7 @@ public class mainScreenController implements Initializable, InterfaceScreenEvent
     		outputButton.setVisible(true);
 
 		} catch (Exception e) {
+			MessageDialogCreator.createErrorDialog("yamlファイルが開けませんでした");
 			e.printStackTrace();
 		}
     }
@@ -129,6 +139,7 @@ public class mainScreenController implements Initializable, InterfaceScreenEvent
      */
     @FXML
     public void onClickAddTestIdButton() {
+    	// ABテスト追加画面を表示
     	ScreenManager.getInstance().displayAbtestAddScreen(this);
     }
 
@@ -138,6 +149,39 @@ public class mainScreenController implements Initializable, InterfaceScreenEvent
     @FXML
     public void onClickOutputButton() {
 
+    	// yamlファイルに出力するabtest情報を文字列で生成
+    	List<String> outputStringList = OutputAbtestStringFactory.createOutputAbtestStringList(AbtestUnitMaster.getInstance().getList());
+
+    	if( CollectionUtils.isEmpty(outputStringList) ) {
+    		MessageDialogCreator.createErrorDialog("yamlファイルの書き込みに失敗しました：outputStringListが空");
+    		return;
+    	}
+
+    	if( StringUtils.isBlank(yamlFilePath) ) {
+    		MessageDialogCreator.createErrorDialog("yamlファイルの書き込みに失敗しました：yamlFilePathが空");
+    		return;
+    	}
+
+    	/** ファイル書き込み処理 */
+    	try ( FileWriter file = new FileWriter(yamlFilePath);
+    			PrintWriter pw = new PrintWriter(new BufferedWriter(file)) ){
+
+    		for( String string : outputStringList ) {
+    			pw.println(string);
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		MessageDialogCreator.createErrorDialog("yamlファイルの書き込みに失敗しました：ファイル書き込み処理で失敗");
+		}
+
+    	// 出力完了ダイアログ表示
+    	MessageDialogCreator.createDefaultDialog("", "出力成功");
+
+    	// Deleteフラグが true に設定されているABテストIDをマスタから削除
+    	AbtestUnitMaster.getInstance().cleanAbtestUnitByDeleteFlg();
+
+    	// 画面に表示しているABテストID情報を更新
+    	redisplayInfoItemForGridPane(displayAbtestInfoArea, AbtestUnitMaster.getInstance().getTestIdList());
     }
 
     /**
@@ -205,11 +249,8 @@ public class mainScreenController implements Initializable, InterfaceScreenEvent
 	@Override
 	public void update() {
 
-		List<String> abtestIdList = AbtestUnitMaster.getInstance().getList().stream()
-				.map(AbtestUnit::getId)
-				.collect(Collectors.toList());
 		// AbtestUnitマスタ情報を元に表示しているAbtest情報を更新する
-		redisplayInfoItemForGridPane(this.displayAbtestInfoArea, abtestIdList);
+		redisplayInfoItemForGridPane(this.displayAbtestInfoArea, AbtestUnitMaster.getInstance().getTestIdList());
 	}
 
 	@Override

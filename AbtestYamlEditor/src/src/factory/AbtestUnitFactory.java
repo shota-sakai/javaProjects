@@ -22,7 +22,7 @@ public class AbtestUnitFactory {
 	 * @return
 	 */
 	public static List<AbtestUnit> create(List<String> inputString) {
-		// TODO 自動生成されたメソッド・スタブ
+
 		if( CollectionUtils.isEmpty(inputString) ) {
 			return Collections.emptyList();
 		}
@@ -109,9 +109,9 @@ public class AbtestUnitFactory {
 
 				List<AbtestCaseUnit> caseList = Lists.newArrayList();
 				for( int j=i+1; j<abtestStrList.size()-1; j++ ) {
-					if( abtestStrList.get(j).indexOf(AbtestPartsConstants.PATTERN_ID) != -1) {
+					if( abtestStrList.get(j).indexOf(AbtestPartsConstants.CASE_ID) != -1) {
 						AbtestCaseUnit caseUnit = new AbtestCaseUnit();
-						String patternId = AbtestStringUtils.subAbtestStr(abtestStrList.get(j), AbtestPartsConstants.PATTERN_ID);
+						String patternId = AbtestStringUtils.subAbtestStr(abtestStrList.get(j), AbtestPartsConstants.CASE_ID);
 						String ratioStr = AbtestStringUtils.subAbtestStr(abtestStrList.get(j+1), AbtestPartsConstants.RATIO);
 
 						if( StringUtils.isNotBlank(patternId) && StringUtils.isNotBlank(ratioStr) ) {

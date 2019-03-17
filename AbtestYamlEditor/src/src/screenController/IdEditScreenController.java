@@ -82,7 +82,7 @@ public class IdEditScreenController implements InterfaceScreenEvent{
     	AbtestUnit editAbtestUnit =  createEditAbtestUnit();
 
     	// abtestUnitオブジェクトをAbtestUnitマスタを更新する
-    	AbtestUnitMaster.getInstance().updateAbtestInfo( this.abtestIdNo, editAbtestUnit );
+    	AbtestUnitMaster.getInstance().updateAbtestUnit( this.abtestIdNo, editAbtestUnit );
 
     	// AbtestEdit画面を閉じる
     	ScreenManager.getInstance().closeScreen(cancelButton);
